@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText et_password; // 声明一个编辑框对象
     private Button btn_forget; // 声明一个忘记密码按钮控件对象
     private Button btn_login; // 声明一个登录按钮控件对象
+    private Button btn_signup;
     private Switch sw_status; // 声明一个开关按钮对象
 
     private int mRequestCode = 0; // 跳转页面时的请求代码
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         et_password = findViewById(R.id.et_password);
         btn_forget = findViewById(R.id.btn_forget);
         btn_login = findViewById(R.id.btn_login);
+        btn_signup = findViewById(R.id.btn_signup);
         sw_status = findViewById(R.id.sw_status);
 
         // 给rg_login设置单选监听器
@@ -76,18 +78,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btn_forget.setOnClickListener(this);
         btn_login.setOnClickListener(this);
+        btn_signup.setOnClickListener(this);
 
         initTypeSpinner();
 
         //从share_login.xml中获取共享参数对象
         mShared = getSharedPreferences("share_login", MODE_PRIVATE);
         // 获取共享参数中保存的手机号码
-        /*String phone = mShared.getString("phone", "");
+        String phone = mShared.getString("phone", "");
         // 获取共享参数中保存的密码
         String password = mShared.getString("password", "");
         et_phone.setText(phone); // 给手机号码编辑框填写上次保存的手机号
         et_password.setText(password); // 给密码编辑框填写上次保存的密码
-        */
+
 
         // 给密码编辑框注册一个焦点变化监听器，一旦焦点发生变化，就触发监听器的onFocusChange方法
         et_password.setOnFocusChangeListener(this);
@@ -173,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return;
             // 手机号码输入达到11位，或者密码/验证码输入达到6位，都关闭输入法软键盘
             if ((mStr.length() == 11 && mMaxLength == 11) ||
-                    (mStr.length() == 6 && mMaxLength == 6)) {
+                    (mStr.length() == 8 && mMaxLength == 8)) {
                 ViewUtil.hideOneInputMethod(MainActivity.this, mView);
             }
         }
@@ -225,6 +228,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else { // 验证码校验通过
                     loginSuccess(); // 提示用户登录成功
                 }
+            }
+        }else if (v.getId() == R.id.btn_signup){
+            if (rb_password.isChecked()) {
+                Intent intent = new Intent(this, SQLiteWriteActivity.class);
+                startActivityForResult(intent, mRequestCode);
             }
         }
     }
