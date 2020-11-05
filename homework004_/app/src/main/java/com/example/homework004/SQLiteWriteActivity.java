@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.example.homework004.bean.UserInfo;
 import com.example.homework004.database.UserDBHelper;
@@ -17,6 +18,7 @@ import com.example.homework004.util.DateUtil;
 
 public class SQLiteWriteActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG ="SQLiteWriteActivity";//Log提示信息
     private UserDBHelper mHelper; // 声明一个用户数据库帮助器的对象
     private EditText et_name;
     private EditText et_age;
@@ -26,6 +28,12 @@ public class SQLiteWriteActivity extends AppCompatActivity implements View.OnCli
     private EditText et_repwd;
     private EditText et_phone;
     private boolean BMsex = false;
+
+    private int mRequestCode = 0;//跳转页面时的请求代码
+    private int mType =0;//用户类型
+    private boolean bRemember =false;//是否记住密码
+    private String mVerifyCode;//验证码
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,15 +65,19 @@ public class SQLiteWriteActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     protected void onStart() {
+        Log.d(TAG,"onStart:openLink");
         super.onStart();
         // 获得数据库帮助器的实例
         mHelper = UserDBHelper.getInstance(this, 2);
         // 打开数据库帮助器的写连接
         mHelper.openWriteLink();
+        //打开数据库帮助的读连接
+        mHelper.openReadLink();
     }
 
     @Override
     protected void onStop() {
+        Log.d(TAG,"onStart:closeLink");
         super.onStop();
         // 关闭数据库连接
         mHelper.closeLink();
@@ -119,6 +131,7 @@ public class SQLiteWriteActivity extends AppCompatActivity implements View.OnCli
 
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
