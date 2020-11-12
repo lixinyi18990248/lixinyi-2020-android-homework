@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tv_photo" type="id" />
+    <item name="tv_num" type="id" />
+    <item name="tv_total" type="id" />
+    <item name="ll_account" type="id" />
+    <item name="sv_content" type="id" />
+    <item name="lv_cart" type="id" />
+    <item name="tv_total_price" type="id" />
+    <item name="gp_content" type="id" />
+    <item name="gp_empty" type="id" />
+    <item name="btn_shopping_channel" type="id" />
+    <item name="btn_settle" type="id" />
+    <item name="ll_cart" type="id" />
+    <item name="tv_empty" type="id" />
+</resources>
