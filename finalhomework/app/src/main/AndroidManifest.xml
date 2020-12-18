@@ -35,7 +35,7 @@
             android:name="com.example.finalhomework.LoginForgetActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.finalhomework.LaunchImproveActivity"
+            android:name="com.example.finalhomework.StartActivity"
             android:exported="true" />
         <activity
             android:name="com.example.finalhomework.LaunchSimpleActivity"
@@ -55,7 +55,7 @@
         <activity
             android:name="com.example.finalhomework.Main2Activity"
             android:exported="false" />
-        <activity android:name="com.example.finalhomework.StartActivity">
+        <activity android:name="com.example.finalhomework.LaunchImproveActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

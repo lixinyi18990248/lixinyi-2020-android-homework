@@ -104,10 +104,10 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         list_path.add(R.mipmap.image2);
         list_path.add(R.mipmap.image3);
         list_path.add(R.mipmap.image4);
-        list_title.add("小兔叽");
-        list_title.add("小伙计");
-        list_title.add("小傻子");
-        list_title.add("小燕子");
+        list_title.add("lego");
+        list_title.add("乐高");
+        list_title.add("乐高乐高");
+        list_title.add("legolego");
         //设置内置样式，共有六种可以点入方法内逐一体验使用。
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
         //设置图片加载器，图片加载器在下方
